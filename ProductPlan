@@ -1,0 +1,41 @@
+name: Update ProductPlan Roadmap
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-roadmap:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Update Roadmap
+      run: |
+        # Add your code here to update the ProductPlan roadmap
+        # You can use the ProductPlan API or interact with their platform in your preferred programming language
+        # Authenticate, fetch data, and update your roadmap programmatically
+
+        # Example Python code to update roadmap using ProductPlan API
+        # Replace <your-api-key> and <your-roadmap-id> with your actual API key and roadmap ID
+        # Install necessary dependencies using `pip install productplan`
+        python -m pip install productplan
+
+        python - <<EOF
+        import productplan
+
+        api_key = "a9ae6cd3ca05f5053efe31803fd6e3fde51a9af50c1489ba58177d40d69e94ef"
+        roadmap_id = "i2kGM5Eu"
+
+        client = productplan.Client(api_key)
+        roadmap = client.get_roadmap(roadmap_id)
+
+        # Update the roadmap with your desired changes
+        # Example: roadmap.update(...)
+
+        # Commit the changes
+        roadmap.commit()
+        EOF
